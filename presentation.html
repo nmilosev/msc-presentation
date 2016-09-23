@@ -1,0 +1,99 @@
+﻿<html>
+
+<head>
+    <link rel="stylesheet" href="reveal/css/reveal.css">
+    <link rel="stylesheet" href="reveal/css/theme/simple.css">
+    <link rel="stylesheet" href="vs.css">
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h2>
+                    Razvoj cross-platform native mobilnih aplikacija u programskom jeziku C#
+                </h2>
+                <h6>
+                    - master rad -
+                </h6>
+                <h3>
+                    Nemanja Milošević
+                </h3>
+            </section>
+            <section>Slide 1</section>
+            <section>Slide 2</section>
+            <section>
+                <pre>
+                    <code data-trim data-noescape class="cs">
+                        private void SetupIoc()
+                        {
+                            ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
+
+                            SimpleIoc.Default.Register<Navigation.Navigator>(true);
+
+                            SimpleIoc.Default.Register<INewsSource, LocalNewsSource>();
+                            SimpleIoc.Default.Register<IScheduleSource, LocalScheduleSource>();
+                            SimpleIoc.Default.Register<ISubjectsSource, LocalSubjectsSource>();
+
+                            SimpleIoc.Default.Register<IFAQSource, LocalFAQSource>();
+
+                            SimpleIoc.Default.Register<IDepartmentsSource, LocalDepartmentSource>();
+
+                            SimpleIoc.Default.Register<IProgramsSource, LocalProgramsSource>();
+                        }
+                    </code></pre>
+            </section>
+            <section data-background-image="https://github.com/nmilosev/PMF/raw/master/screenshots/demo3.gif" data-background-size="360px"
+                data-background-position="10% 50%">
+                <h2>Video</h2>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                        ## Page title
+
+                        A paragraph with some text and a [link](http://hakim.se).
+                        
+                        * Item 1 <!-- .element: class="fragment" -->
+                        * Item 2 <!-- .element: class="fragment" -->
+                    </script>
+            </section>
+        </div>
+    </div>
+
+    <script src="reveal/js/reveal.js"></script>
+    <script src="head.min.js"></script>
+
+    <script>
+        Reveal.initialize({   
+            // Display controls in the bottom right corner
+            controls: false,
+            // Display a presentation progress bar
+            progress: true,
+            // Display the page number of the current slide
+            slideNumber: true,
+            transition: "convex",         
+            dependencies: [
+                // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+                //{ src: 'reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+                // Interpret Markdown in <section> elements
+                { src: 'reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: 'reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+                // Syntax highlight for <code> elements
+                { src: 'reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+                // Zoom in and out with Alt+click
+                { src: 'reveal/plugin/zoom-js/zoom.js', async: true },
+
+                // Speaker notes
+                { src: 'reveal/plugin/notes/notes.js', async: true },
+
+                // MathJax
+                //{ src: 'reveal/plugin/math/math.js', async: true }
+            ]
+        });
+        </script>
+</body>
+
+</html>
