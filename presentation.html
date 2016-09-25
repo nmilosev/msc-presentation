@@ -16,19 +16,24 @@
                 <h6>
                     - master rad -
                 </h6>
-                <h3>
+                <h4>
                     Nemanja Milošević
-                </h3>
+                </h4>
+                
+                <h4>
+                    Mentor: dr Miloš Racković
+                </h4>
             </section>
             <section data-markdown>
                 <script type="text/template">
-                        ## Sadržaj prezentacije
+                        ## Sadržaj
 
-                        * Trenutno stanje oblasti istraživanja
+                        * Trenutno stanje oblasti istraživanja 
                         * Motivacija za razvoj cross-platform aplikacija
                         * Kratko poređenje *native* i *web-wrapper* aplikacija
-                        * Delovi implementacije                        
-                    </script>
+                        * Delovi implementacije
+                        * Budući rad
+                </script>
             </section>
             <section data-markdown>
                 <script type="text/template">
@@ -65,9 +70,9 @@
                 <script type="text/template">
                         ## Aplikacija za sve tri platforme
 
-                        * U tri programska jezika
-                        * Razvijena u tri različita alata
-                        * Na najmanje dva operativna sistema
+                        * u tri programska jezika
+                        * razvijena u tri različita alata
+                        * na najmanje dva operativna sistema
                             * za iOS razvoj potreban macOS
                             * za UWP razvoj potreban Windows 10
                         
@@ -97,7 +102,7 @@
                         ## Web-wrapper biblioteke
                         
                         * koriste *Web* tehnologije (HTML/CSS/JS)
-                        * mobilna aplikacija je zapravo lokalna Web strana
+                        * mobilna aplikacija je zapravo lokalna *Web* strana
                         * grafički interfejs nije u skladu sa ostatkom operativnog sistema
                             * neke biblioteke imaju mogućnost mapiranja na komponente operativnog sistema
                         * ograničenja u pristupu senzorima
@@ -113,6 +118,7 @@
                         * Adobe PhoneGap
                         * React Native
                         * NativeScript
+                        * ...
                         
                 </script>
             </section>
@@ -124,8 +130,7 @@
                         * koriste grafičke komponente operativnog sistema
                         * mogućnost korišćenja naprednih mogućnosti i struktura koje nisu moguće u tradicionalnom načinu razvoja zbog ograničenja jezika ili platforme
                         * razvoj u statičkim, generičkim, tipiziranim jezicima (C#/Java) 
-                        * glomazno i zahtevno razvojno okruženje
-
+                        
                 </script>
             </section>
 
@@ -216,23 +221,61 @@
 
             <section data-markdown>
                 <script type="text/template">
-                        ## Page title
+                        ## Kod za specifične platforme
 
-                        A paragraph with some text and a [link](http://hakim.se).
-                        
-                        * Item 1 <!-- .element: class="fragment" -->
-                        * Item 2 <!-- .element: class="fragment" -->
+                        ```
+                        if (Device.OS == TargetPlatform.iOS 
+                            || Device.OS == TargetPlatform.WinPhone)
+                        {
+                            _saveList();
+                            return;
+                        }
+                        ```
+
+                        ```
+                        <Grid.BackgroundColor>
+                            <OnPlatform x:TypeArguments="Color" 
+                                Android="{x:Static i18n:Colors.AndroidDarkGray}" 
+                                iOS="{x:Static i18n:Colors.iPhoneGray}" 
+                                WinPhone="{x:Static i18n:Colors.iPhoneGray}"/>
+                        </Grid.BackgroundColor>
+                        ```
                     </script>
+            </section>
+
+            
+            <section data-background-image="p1.png" data-background-size="20%" data-background-position="10% 50%">
+                
+                <h2 style="margin-left: 30%">Čarobnjak za predmete</h2>
+                
             </section>
             
             <section data-markdown>
                 <script type="text/template">
-                        ## Page title
+                        ## Nedostaci Xamarin biblioteke
 
-                        A paragraph with some text and a [link](http://hakim.se).
-                        
-                        * Item 1 <!-- .element: class="fragment" -->
-                        * Item 2 <!-- .element: class="fragment" -->
+                        * Smanjene performanse u odnosu na tradicionalni pristup
+                        * Kašnjenje implementacije novih mogućnosti operativnih sistema
+                        * Kompleksnost biblioteke lako sakriva mnoge greške i nedostatke
+                        * Glomazno i nestabilno okruženje
+                    </script>
+            </section>
+
+
+            <section data-markdown>
+                <script type="text/template">
+                        ## Budući rad
+
+                        * Lokalizacija na više jezika
+                        * Povezivanje aplikacije sa bazom za studentske servise
+                        * Implementacija keširanja podataka da bi aplikacija mogla da radi i bez Internet konekcije
+                        * Implementacija dodatnih korisnih mogućnosti
+                    </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                        ## Hvala na pažnji!                        
                     </script>
             </section>
         </div>
