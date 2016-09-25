@@ -20,33 +20,211 @@
                     Nemanja Milošević
                 </h3>
             </section>
-            <section>Slide 1</section>
-            <section>Slide 2</section>
-            <section>
-                <pre>
-                    <code data-trim data-noescape class="cs">
-                        private void SetupIoc()
+            <section data-markdown>
+                <script type="text/template">
+                        ## Sadržaj prezentacije
+
+                        * Trenutno stanje oblasti istraživanja
+                        * Motivacija za razvoj cross-platform aplikacija
+                        * Kratko poređenje *native* i *web-wrapper* aplikacija
+                        * Delovi implementacije                        
+                    </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                        ## Trenutno stanje oblasti istraživanja
+
+                        (septembar 2016.)                        
+                    </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                        ## Mobilni operativni sistemi
+
+                        <img src="marketshare.png" style="background:none; border:none; box-shadow:none;">
+
+                        <div style="text-align: right;">Izvor: *netmarketshare.com*</div>
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                        ## Fragmentisane tehnologije, programski jezici i alati
+
+                        * Android
+                            * razvoj u Java programskom jeziku (*Android Studio*)
+
+                        * iOS                        
+                            * razvoj u Swift programskom jeziku (*Xcode*)
+                        
+                        * Windows (Universal Windows Platform)
+                            * Razvoj u .NET porodici jezika (*Visual Studio*)
+                        
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                        ## Aplikacija za sve tri platforme
+
+                        * U tri programska jezika
+                        * Razvijena u tri različita alata
+                        * Na najmanje dva operativna sistema
+                            * za iOS razvoj potreban macOS
+                            * za UWP razvoj potreban Windows 10
+                        
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                        ## Cross-platform aplikacije
+                        
+                        * apstrahuju detalje mobilne platforme
+                            * standardizovan pristup komponentama operativnog sistema
+                        * zajednički kod za sve platforme 
+                        * u jednom programskom jeziku     
+                        * skoro uvek kraće vreme isporuke                   
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                        ## Biblioteke za razvoj
+                        
+                        * *web-wrapper* biblioteke
+                        * *native* biblioteke                   
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                        ## Web-wrapper biblioteke
+                        
+                        * koriste *Web* tehnologije (HTML/CSS/JS)
+                        * mobilna aplikacija je zapravo lokalna Web strana
+                        * grafički interfejs nije u skladu sa ostatkom operativnog sistema
+                            * neke biblioteke imaju mogućnost mapiranja na komponente operativnog sistema
+                        * ograničenja u pristupu senzorima
+                        * *Web* tehnologije nisu dobar izbor za *enterprise* aplikacije
+                        
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                        ## Web-wrapper biblioteke
+                        
+                        * Apache Cordova
+                        * Adobe PhoneGap
+                        * React Native
+                        * NativeScript
+                        
+                </script>
+            </section>
+            <section data-markdown>
+                <script type="text/template">
+                        ## Native biblioteke
+                        
+                        * koriste napredne mogućnosti modernih jezika da apstrakuju platforme
+                        * koriste grafičke komponente operativnog sistema
+                        * mogućnost korišćenja naprednih mogućnosti i struktura koje nisu moguće u tradicionalnom načinu razvoja zbog ograničenja jezika ili platforme
+                        * razvoj u statičkim, generičkim, tipiziranim jezicima (C#/Java) 
+                        * glomazno i zahtevno razvojno okruženje
+
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                        ## Native biblioteke
+                        
+                        * NativeScript, React Native (?)
+                        * CodenameOne (Java)
+                        * Kivy (Python)
+                        * Xamarin (.NET jezici)
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                        ## Zašto Xamarin?
+                        
+                        * besplatan, open-source framework
+                        * najzrelija biblioteka
+                        * Xamarin.Forms biblioteka za grafički interfejs omogućava izuzetno visok stepen deljenog koda
+                        * dobra dokumentacija i resursi
+                         
+                </script>
+            </section>
+
+            <section data-background-image="demo3.gif" data-background-size="20%" data-background-position="10% 50%">
+                
+                <h2 style="margin-left: 30%">Aplikacija za studentske servise</h2>
+                <h6 style="margin-left: 30%">github.com/nmilosev/PMF (GPLv3)</h2>
+                
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                        ## Najbolje prakse u razvoju cross-platform mobilnih aplikacija
+                        
+                        * primena MVVM, IoC dizajn obrazaca
+                        * napredna primena i načini za proširivanje *Xamarin.Forms* biblioteke
+                        * lokalizacija aplikacije
+                        * integracija sa mogućnostima operativnog sistema
+                        * načini za optimizaciju performansi
+                        * ...
+                         
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                        ## XAML Xamarin.Forms glavna stranica aplikacije
+                        
+                        ```
+                        <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                          x:Class="PMF.Views.MainPage"
+                          xmlns:local="clr-namespace:PMF.Views"
+                          DetailPage="{Binding Welcome, Source={StaticResource ViewLocator}"
+                          MasterPage="{Binding Menu, Source={StaticResource ViewLocator}">
+                        </MasterDetailPage>
+                        ```
+                         
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                        ## Ugrađena lokalizacija
+                        
+                        ```
+                        ...
+                        xmlns:i18n="clr-namespace: PMF.Dictionaries"
+                        Title="{i18n:Translate FAQTitle}"
+                        ...
+                        ```
+
+                        ```
+                        ...
+                        bool loadingOk = false;
+
+                        using (UserDialogs.Instance.Loading("PleaseWait".Localize()))
                         {
-                            ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
-
-                            SimpleIoc.Default.Register<Navigation.Navigator>(true);
-
-                            SimpleIoc.Default.Register<INewsSource, LocalNewsSource>();
-                            SimpleIoc.Default.Register<IScheduleSource, LocalScheduleSource>();
-                            SimpleIoc.Default.Register<ISubjectsSource, LocalSubjectsSource>();
-
-                            SimpleIoc.Default.Register<IFAQSource, LocalFAQSource>();
-
-                            SimpleIoc.Default.Register<IDepartmentsSource, LocalDepartmentSource>();
-
-                            SimpleIoc.Default.Register<IProgramsSource, LocalProgramsSource>();
-                        }
-                    </code></pre>
+                            var svc = SimpleIoc.Default.GetInstance<IProgramsSource>();
+                        ...
+                        ```
+                         
+                </script>
             </section>
-            <section data-background-image="https://github.com/nmilosev/PMF/raw/master/screenshots/demo3.gif" data-background-size="360px"
-                data-background-position="10% 50%">
-                <h2>Video</h2>
+
+            <section data-markdown>
+                <script type="text/template">
+                        ## Page title
+
+                        A paragraph with some text and a [link](http://hakim.se).
+                        
+                        * Item 1 <!-- .element: class="fragment" -->
+                        * Item 2 <!-- .element: class="fragment" -->
+                    </script>
             </section>
+            
             <section data-markdown>
                 <script type="text/template">
                         ## Page title
